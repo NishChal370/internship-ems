@@ -1,14 +1,13 @@
 package com.internship.ems.controller;
 
-import com.internship.ems.model.Department;
+import java.util.List;
+import javax.validation.Valid;
 import com.internship.ems.model.Employee;
-import com.internship.ems.service.EmployeeService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import com.internship.ems.service.EmployeeService;
 import org.springframework.beans.factory.annotation.Autowired;
-import javax.validation.Valid;
-import java.util.List;
 
 @RestController
 public class EmployeeController {

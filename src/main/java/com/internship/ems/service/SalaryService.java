@@ -1,13 +1,13 @@
 package com.internship.ems.service;
 
-import com.internship.ems.dao.SalaryRepository;
+import java.util.List;
 import com.internship.ems.model.Salary;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
+import com.internship.ems.dao.SalaryRepository;
 import javax.persistence.EntityExistsException;
 import javax.persistence.EntityNotFoundException;
-import java.util.List;
+import org.springframework.beans.factory.annotation.Autowired;
+
 
 @Service
 public class SalaryService {

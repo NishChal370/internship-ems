@@ -1,12 +1,11 @@
 package com.internship.ems.controller;
 
-import com.internship.ems.model.Project;
 import com.internship.ems.model.Salary;
-import com.internship.ems.service.SalaryService;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import com.internship.ems.service.SalaryService;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.beans.factory.annotation.Autowired;
 
 import javax.validation.Valid;
 import java.util.List;

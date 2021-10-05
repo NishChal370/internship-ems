@@ -1,14 +1,11 @@
 package com.internship.ems.service;
 
-import com.internship.ems.dao.EmployeeRepository;
-import com.internship.ems.dao.ProjectRepository;
-import com.internship.ems.model.Employee;
-import com.internship.ems.model.Project;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
-
-import javax.persistence.EntityNotFoundException;
 import java.util.List;
+import com.internship.ems.model.Project;
+import org.springframework.stereotype.Service;
+import com.internship.ems.dao.ProjectRepository;
+import javax.persistence.EntityNotFoundException;
+import org.springframework.beans.factory.annotation.Autowired;
 
 @Service
 public class ProjectService {
