@@ -2,6 +2,7 @@ package com.internship.ems.model;
 
 import com.internship.ems.enums.Gender;
 import lombok.Data;
+import org.hibernate.annotations.ColumnDefault;
 
 import java.time.LocalDate;
 import java.time.ZoneId;
@@ -33,7 +34,6 @@ public class Employee {
     private int age;
 
     @NotEmpty(message = "Email should not be empty")
-    @Column(unique=true)
     @Email
     private String email;
 
@@ -44,7 +44,6 @@ public class Employee {
 
     private Date resignedDate;
 
-    @Column(name="address", columnDefinition="default 'Nepal'")
     private String address;
 
 
