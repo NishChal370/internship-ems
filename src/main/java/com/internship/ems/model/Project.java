@@ -7,17 +7,27 @@ import javax.validation.constraints.NotEmpty;
 
 @Data
 @Entity
-@Table(name = "project")
+@Table(name = "project", schema = "EMS")
 public class Project {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
 
-    @NotEmpty
-    @Size(max = 50, message = "Name should not be empty")
+    @NotEmpty(message = "Name should not be empty")
+    @Size(max = 50)
     private String name;
 
-    @NotEmpty
-    @Size(max = 100, message = "Name should not be empty")
+    @NotEmpty(message = "Description should not be empty")
+    @Size(max = 100)
     private String description;
+
+    @PreRemove
+    public void PreRemove(){
+        System.out.println("Entity "+this+" will be removed.");
+    }
+
+    @PostRemove
+    public void PostRemove(){
+        System.out.println("Entity "+this+" was removed.");
+    }
 }

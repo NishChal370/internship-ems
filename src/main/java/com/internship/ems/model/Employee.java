@@ -1,50 +1,57 @@
 package com.internship.ems.model;
 
+import com.internship.ems.enums.Gender;
 import lombok.Data;
+
+import java.time.LocalDate;
+import java.time.ZoneId;
 import java.util.Date;
 import javax.persistence.*;
-import javax.validation.constraints.Min;
-import javax.validation.constraints.Size;
-import javax.validation.constraints.NotNull;
-import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.*;
 
 
 @Data
 @Entity
-@Table(name = "employee")
+@Table(name = "employee", schema = "EMS", uniqueConstraints= {@UniqueConstraint(columnNames={"email"})})
 public class Employee {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int employeeId;
 
-    @NotEmpty
-    @Size(min = 1, message = "FirstName should not be empty")
+    @NotEmpty(message = "FirstName should not be empty")
+    @Column(nullable = false)
     private String firstName;
 
-    @NotEmpty
-    @Size(min = 1, message = "Last should not be empty")
+    @NotEmpty(message = "Last should not be empty")
+    @Column(nullable = false)
     private String lastName;
 
-    @NotEmpty
-    @Size(min = 1, message = "Gender should not be empty")
-    private String gender;
+    @Enumerated(EnumType.STRING)
+    private Gender gender;
 
     @NotNull(message = "Age should not be empty")
-    @Min(1)
     private int age;
 
-    @NotEmpty
-    @Size(min = 1, message = "Email should not be empty")
+    @NotEmpty(message = "Email should not be empty")
+    @Column(unique=true)
+    @Email
     private String email;
 
-    @NotEmpty
-    @Size(min = 1, message = "Designation should not be empty")
+    @NotEmpty(message = "Designation should not be empty")
     private String designation;
 
-    @NotNull(message = "Hiring Date should not be empty")
     private Date hireDate;
 
     private Date resignedDate;
+
+    @Column(name="address", columnDefinition="default 'Nepal'")
     private String address;
 
+
+    @PrePersist
+    public void PrePersist(){
+        ZoneId defaultZoneId = ZoneId.systemDefault();
+        LocalDate localDate = LocalDate.now();
+        this.setHireDate(Date.from(localDate.atStartOfDay(defaultZoneId).toInstant()));
+    }
 }

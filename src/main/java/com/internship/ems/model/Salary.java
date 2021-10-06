@@ -8,7 +8,8 @@ import javax.validation.constraints.NotNull;
 
 @Data
 @Entity
-@Table(name = "salary")
+@Table(name = "salary", schema = "EMS")
+
 public class Salary {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -18,8 +19,17 @@ public class Salary {
     private Date issueDate;
 
     @NotNull
-    @Min(1)
     private float amount;
 
     private float bonus;
+
+    @PreRemove
+    public void PreRemove(){
+        System.out.println("Entity "+this+" will be removed.");
+    }
+
+    @PostRemove
+    public void PostRemove(){
+        System.out.println("Entity "+this+" was removed.");
+    }
 }
