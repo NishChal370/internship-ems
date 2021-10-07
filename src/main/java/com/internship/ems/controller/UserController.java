@@ -1,8 +1,8 @@
 package com.internship.ems.controller;
-
-import java.util.List;
 import com.internship.ems.model.User;
 import com.internship.ems.service.UserService;
+
+import java.util.List;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.PostMapping;

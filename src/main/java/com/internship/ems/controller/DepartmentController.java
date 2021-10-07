@@ -22,7 +22,6 @@ public class DepartmentController {
         return service.getById(id);
     }
 
-
     @PostMapping("/saveDepartment")
     public Department saveDepartment(@Valid @RequestBody Department department){
         return service.saveDepartment(department);

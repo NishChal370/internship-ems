@@ -1,13 +1,13 @@
 package com.internship.ems.controller;
-
 import com.internship.ems.model.Salary;
 import com.internship.ems.service.SalaryService;
+
+import java.util.List;
+import javax.validation.Valid;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.beans.factory.annotation.Autowired;
 
-import javax.validation.Valid;
-import java.util.List;
 
 @RestController
 @Validated
