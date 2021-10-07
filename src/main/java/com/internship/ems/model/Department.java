@@ -2,7 +2,6 @@ package com.internship.ems.model;
 
 import lombok.Data;
 import javax.persistence.*;
-import javax.validation.constraints.Max;
 import javax.validation.constraints.Size;
 import javax.validation.constraints.NotEmpty;
 
@@ -14,12 +13,12 @@ public class Department {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int departmentId;
 
-    @NotEmpty(message = "Name should not be empty")
     @Size(max = 50)
+    @NotEmpty(message = "Name should not be empty")
     private String name;
 
-    @NotEmpty(message = "Description should not be empty")
     @Size(max = 100)
+    @NotEmpty(message = "Description should not be empty")
     private String description;
 
 

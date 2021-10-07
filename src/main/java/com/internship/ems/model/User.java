@@ -7,9 +7,9 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 
+@Data
 @Entity
 @Table(name = "user")
-@Data
 public class User {
 
     @Id

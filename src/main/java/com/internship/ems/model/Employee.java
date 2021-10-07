@@ -1,13 +1,11 @@
 package com.internship.ems.model;
-
 import com.internship.ems.enums.Gender;
-import lombok.Data;
-import org.hibernate.annotations.ColumnDefault;
 
-import java.time.LocalDate;
-import java.time.ZoneId;
+import lombok.Data;
 import java.util.Date;
+import java.time.ZoneId;
 import javax.persistence.*;
+import java.time.LocalDate;
 import javax.validation.constraints.*;
 
 
@@ -19,12 +17,12 @@ public class Employee {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int employeeId;
 
-    @NotEmpty(message = "FirstName should not be empty")
     @Column(nullable = false)
+    @NotEmpty(message = "FirstName should not be empty")
     private String firstName;
 
-    @NotEmpty(message = "Last should not be empty")
     @Column(nullable = false)
+    @NotEmpty(message = "Last should not be empty")
     private String lastName;
 
     @Enumerated(EnumType.STRING)
@@ -33,8 +31,8 @@ public class Employee {
     @NotNull(message = "Age should not be empty")
     private int age;
 
-    @NotEmpty(message = "Email should not be empty")
     @Email
+    @NotEmpty(message = "Email should not be empty")
     private String email;
 
     @NotEmpty(message = "Designation should not be empty")

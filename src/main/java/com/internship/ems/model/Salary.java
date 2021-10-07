@@ -3,7 +3,6 @@ package com.internship.ems.model;
 import lombok.Data;
 import java.util.Date;
 import javax.persistence.*;
-import javax.validation.constraints.Min;
 import javax.validation.constraints.NotNull;
 
 @Data
