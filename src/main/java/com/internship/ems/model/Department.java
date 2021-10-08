@@ -1,13 +1,20 @@
 package com.internship.ems.model;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.NoArgsConstructor;
+
 import javax.persistence.*;
 import javax.validation.constraints.Size;
 import javax.validation.constraints.NotEmpty;
+import java.util.List;
 
 @Data
 @Entity
 @Table(name = "department", schema = "EMS")
+@AllArgsConstructor
+@NoArgsConstructor
 public class Department {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -21,6 +28,9 @@ public class Department {
     @NotEmpty(message = "Description should not be empty")
     private String description;
 
+    @OneToMany(mappedBy="department",cascade = CascadeType.ALL,fetch = FetchType.LAZY)
+    @JsonManagedReference
+    private List<Employee> employees;
 
     @PreRemove
     public void PreRemove(){

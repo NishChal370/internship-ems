@@ -1,5 +1,6 @@
 package com.internship.ems.service;
 
+import java.util.ArrayList;
 import java.util.List;
 import com.internship.ems.model.Department;
 import org.springframework.stereotype.Service;
@@ -22,8 +23,10 @@ public class DepartmentService {
         return departmentRepo.findById(id).orElseThrow(EntityNotFoundException::new);
     }
 
-    public List<Department> getAll(){
-        return (List<Department>) departmentRepo.findAll();
+    public List<Department> getAll() {
+        List<Department> result = new ArrayList<>();
+        departmentRepo.findAll().forEach(result::add);
+        return result;
     }
 
     public Department updateEmployee(Integer id, Department newDepartment){
