@@ -2,7 +2,9 @@ package com.internship.ems.service;
 
 import java.util.List;
 
+import com.internship.ems.dao.EmployeeDao;
 import com.internship.ems.dto.EmployeeDto;
+import com.internship.ems.enums.Gender;
 import com.internship.ems.mapper.EmployeeMapper;
 import com.internship.ems.model.Employee;
 import org.springframework.stereotype.Service;
@@ -17,6 +19,9 @@ public class EmployeeService {
 
     @Autowired
     private EmployeeMapper employeeMapper;
+
+    @Autowired
+    private EmployeeDao employeeDao;
 
     public EmployeeDto saveEmployee( EmployeeDto employeeDto){
         Employee employeeModel = employeeMapper.DtoToModel(employeeDto);
@@ -33,6 +38,16 @@ public class EmployeeService {
         List<Employee> employeesList = (List<Employee>) employeeRepo.findAll();
 
         return employeeMapper.modelsToDtos(employeesList);
+    }
+
+    public List<EmployeeDto> getEmployeeByFirstName(String firstName){
+
+        return employeeMapper.modelsToDtos( employeeRepo.getUserByFirstName(firstName) );
+    }
+
+    public List<EmployeeDto> getEmployeeByGenderAndAge(Gender gender, int age){
+
+        return employeeMapper.modelsToDtos(employeeRepo.getEmployeeByGenderAndAge(gender, age));
     }
 
     public EmployeeDto updateEmployee(Integer id, EmployeeDto newEmployeeDto){
@@ -53,6 +68,11 @@ public class EmployeeService {
         return employeeMapper.modelToDto(employee);
     }
 
+    public String updateById(int id, int age){
+        employeeRepo.updateEmployeeById(id, age);
+        return "Age of id: "+id+" updated";
+    }
+
     public String deleteEmployee(int id){
         employeeRepo.deleteById(id);
 
@@ -63,5 +83,23 @@ public class EmployeeService {
         employeeRepo.deleteAll();
 
         return "Employee all deleted";
+    }
+
+    public String deleteEmployeeById(int id){
+        employeeRepo.deleteEmployeeById(id);
+
+        return "ID: "+id+" Deleted";
+    }
+
+    public List<EmployeeDto> getByNamedQuery(int departmentId) {
+        return employeeMapper.modelsToDtos(employeeDao.getEmployeeByNamedQuery(departmentId));
+    }
+
+    public List<EmployeeDto> getByTypedQuery(int departmentId) {
+        return employeeMapper.modelsToDtos(employeeDao.getEmployeeByTypedQuery(departmentId));
+    }
+
+    public List<EmployeeDto> getByCriteriaApi(float amount, float bonus) {
+        return employeeMapper.modelsToDtos(employeeDao.getEmployee(amount, bonus));
     }
 }

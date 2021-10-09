@@ -11,7 +11,7 @@ import java.util.List;
 @Mapper(componentModel = "spring")
 public interface ProjectMapper {
 
-    ProjectMapper INSTANCE = Mappers.getMapper(ProjectMapper.class);
+//    ProjectMapper INSTANCE = Mappers.getMapper(ProjectMapper.class);
 
     List<ProjectDto> modelsToDtos(List<Project> projects);
 

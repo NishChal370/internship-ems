@@ -21,6 +21,7 @@ import javax.validation.constraints.*;
 @AllArgsConstructor
 @NoArgsConstructor
 @EntityListeners(EmployeeListener.class)
+@NamedQuery(name = "Employee.getEmployeeByNamedQuery", query = "select e from Employee e where e.department.departmentId=:id")
 public class Employee {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -51,6 +52,7 @@ public class Employee {
 
     private Date resignedDate;
 
+    @Column(insertable=false, updatable = false, nullable = false, columnDefinition = "varchar(255) default 'Nepal'")
     private String address;
 
     @ManyToOne

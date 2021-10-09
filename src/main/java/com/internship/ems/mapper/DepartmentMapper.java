@@ -12,7 +12,7 @@ import java.util.List;
 @Mapper(componentModel = "spring")
 public interface DepartmentMapper {
 
-    DepartmentMapper INSTANCE = Mappers.getMapper(DepartmentMapper.class); //-> to get product mapper implementation class
+//    DepartmentMapper INSTANCE = Mappers.getMapper(DepartmentMapper.class); //-> to get product mapper implementation class
 
     List<DepartmentDto> modelsToDtos(List<Department> departments);
 

@@ -11,7 +11,7 @@ import java.util.List;
 @Mapper(componentModel = "spring")
 public interface SalaryMapper {
 
-    SalaryMapper INSTANCE = Mappers.getMapper(SalaryMapper.class);
+//    SalaryMapper INSTANCE = Mappers.getMapper(SalaryMapper.class);
 
     List<SalaryDto> modelsToDtos(List<Salary> salaries);
 

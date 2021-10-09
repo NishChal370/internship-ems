@@ -18,11 +18,9 @@ public class EmployeeDto {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int employeeId;
 
-//    @Column(nullable = false)
     @NotEmpty(message = "FirstName should not be empty")
     private String firstName;
 
-//    @Column(nullable = false)
     @NotEmpty(message = "Last should not be empty")
     private String lastName;
 
