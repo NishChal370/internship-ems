@@ -34,15 +34,5 @@ public class Department {
     @JsonManagedReference(value =  "employee-department")
     private List<Employee> employee;
 
-    @PreRemove
-    public void PreRemove(){
-        System.out.println("Entity "+this+" will be removed.");
-    }
-
-    @PostRemove
-    public void PostRemove(){
-        System.out.println("Entity "+this+" was removed.");
-    }
-
 }
 
