@@ -1,15 +1,15 @@
 package com.internship.ems.model;
 
-import com.fasterxml.jackson.annotation.JsonManagedReference;
-import com.internship.ems.listener.DepartmentListener;
-import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.AllArgsConstructor;
 import lombok.NoArgsConstructor;
+import com.internship.ems.listener.DepartmentListener;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 
+import java.util.List;
 import javax.persistence.*;
 import javax.validation.constraints.Size;
 import javax.validation.constraints.NotEmpty;
-import java.util.List;
 
 @Data
 @Entity

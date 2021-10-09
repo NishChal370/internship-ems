@@ -1,10 +1,9 @@
 package com.internship.ems.listener;
 
-import com.internship.ems.model.Department;
-import org.apache.commons.logging.Log;
-import org.apache.commons.logging.LogFactory;
-
 import javax.persistence.*;
+import org.apache.commons.logging.Log;
+import com.internship.ems.model.Department;
+import org.apache.commons.logging.LogFactory;
 
 public class DepartmentListener {
     private static Log log = LogFactory.getLog(EmployeeListener.class);

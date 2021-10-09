@@ -1,11 +1,10 @@
 package com.internship.ems.dto;
 
 import lombok.Data;
-
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
-import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.Size;
+import javax.validation.constraints.NotEmpty;
 
 @Data
 public class ProjectDto {

@@ -1,15 +1,14 @@
 package com.internship.ems.dao;
 
-import com.internship.ems.model.Employee;
-import com.internship.ems.model.Salary;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Repository;
-
-import javax.persistence.EntityManager;
+import java.util.List;
 import javax.persistence.Query;
 import javax.persistence.TypedQuery;
 import javax.persistence.criteria.*;
-import java.util.List;
+import com.internship.ems.model.Salary;
+import javax.persistence.EntityManager;
+import com.internship.ems.model.Employee;
+import org.springframework.stereotype.Repository;
+import org.springframework.beans.factory.annotation.Autowired;
 
 @Repository
 public class EmployeeDao {

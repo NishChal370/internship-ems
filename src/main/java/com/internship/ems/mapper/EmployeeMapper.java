@@ -1,12 +1,10 @@
 package com.internship.ems.mapper;
 
+import java.util.List;
+import org.mapstruct.Mapper;
 import com.internship.ems.dto.EmployeeDto;
 import com.internship.ems.model.Employee;
 import org.mapstruct.InheritInverseConfiguration;
-import org.mapstruct.Mapper;
-import org.mapstruct.factory.Mappers;
-
-import java.util.List;
 
 @Mapper(componentModel = "spring")
 public interface EmployeeMapper {

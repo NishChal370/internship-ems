@@ -1,11 +1,10 @@
 package com.internship.ems.model;
 
-import com.fasterxml.jackson.annotation.JsonBackReference;
-import com.fasterxml.jackson.annotation.JsonManagedReference;
-import com.internship.ems.listener.SalaryListener;
-import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import lombok.AllArgsConstructor;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+import com.internship.ems.listener.SalaryListener;
 
 import java.util.Date;
 import javax.persistence.*;

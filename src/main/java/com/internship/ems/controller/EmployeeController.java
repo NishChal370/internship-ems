@@ -1,18 +1,15 @@
 package com.internship.ems.controller;
+import com.internship.ems.service.EmployeeService;
 
 import java.util.List;
-import javax.sound.midi.Soundbank;
-import javax.transaction.Transactional;
 import javax.validation.Valid;
+import javax.transaction.Transactional;
 
-import com.internship.ems.dto.EmployeeDto;
 import com.internship.ems.enums.Gender;
-import com.internship.ems.mapper.EmployeeMapper;
-import com.internship.ems.model.Employee;
+import com.internship.ems.dto.EmployeeDto;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-import com.internship.ems.service.EmployeeService;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.beans.factory.annotation.Autowired;
 
@@ -42,7 +39,13 @@ public class EmployeeController {
         return service.getEmployeeByGenderAndAge(gender, age);
     }
 
-    @GetMapping("/custom/employees/namedquery")
+    @GetMapping("/employeesByGender/{gender}")
+    public List<EmployeeDto> getEmployeeByGender(@PathVariable Gender gender){
+
+        return service.getEmployeeByGender(gender);
+    }
+
+    @GetMapping("/custom/employees/namedQuery")
     public List<EmployeeDto> getEmployeeByNamedQuery(@RequestParam("departmentId") int departmentId) {
         return service.getByNamedQuery(departmentId);
     }

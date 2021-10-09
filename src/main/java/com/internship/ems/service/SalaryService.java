@@ -1,10 +1,9 @@
 package com.internship.ems.service;
 
 import java.util.List;
-
 import com.internship.ems.dto.SalaryDto;
-import com.internship.ems.mapper.SalaryMapper;
 import com.internship.ems.model.Salary;
+import com.internship.ems.mapper.SalaryMapper;
 import org.springframework.stereotype.Service;
 import com.internship.ems.dao.SalaryRepository;
 import javax.persistence.EntityExistsException;

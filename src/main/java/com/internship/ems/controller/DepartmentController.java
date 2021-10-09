@@ -1,12 +1,8 @@
 package com.internship.ems.controller;
 
 import java.util.List;
-import javax.validation.Valid;
-
-import com.internship.ems.dto.DepartmentDto;
-import com.internship.ems.mapper.DepartmentMapper;
-import com.internship.ems.model.Department;
 import org.springframework.http.HttpStatus;
+import com.internship.ems.dto.DepartmentDto;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import com.internship.ems.service.DepartmentService;

@@ -4,10 +4,8 @@ import java.util.List;
 import javax.validation.Valid;
 
 import com.internship.ems.dto.ProjectDto;
-import com.internship.ems.mapper.ProjectMapper;
-import com.internship.ems.model.Project;
-import org.springframework.web.bind.annotation.*;
 import com.internship.ems.service.ProjectService;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.beans.factory.annotation.Autowired;
 

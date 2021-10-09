@@ -1,15 +1,14 @@
 package com.internship.ems.dto;
 
-import com.fasterxml.jackson.annotation.JsonManagedReference;
-import com.internship.ems.model.Employee;
-import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.AllArgsConstructor;
 import lombok.NoArgsConstructor;
+import com.internship.ems.model.Employee;
 
-import javax.persistence.*;
-import javax.validation.constraints.NotEmpty;
-import javax.validation.constraints.Size;
 import java.util.List;
+import javax.persistence.*;
+import javax.validation.constraints.Size;
+import javax.validation.constraints.NotEmpty;
 
 @Data
 @AllArgsConstructor

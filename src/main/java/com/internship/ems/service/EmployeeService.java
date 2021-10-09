@@ -5,8 +5,8 @@ import java.util.List;
 import com.internship.ems.dao.EmployeeDao;
 import com.internship.ems.dto.EmployeeDto;
 import com.internship.ems.enums.Gender;
-import com.internship.ems.mapper.EmployeeMapper;
 import com.internship.ems.model.Employee;
+import com.internship.ems.mapper.EmployeeMapper;
 import org.springframework.stereotype.Service;
 import javax.persistence.EntityNotFoundException;
 import com.internship.ems.dao.EmployeeRepository;
@@ -50,6 +50,22 @@ public class EmployeeService {
         return employeeMapper.modelsToDtos(employeeRepo.getEmployeeByGenderAndAge(gender, age));
     }
 
+    public List<EmployeeDto> getByNamedQuery(int departmentId) {
+        return employeeMapper.modelsToDtos(employeeDao.getEmployeeByNamedQuery(departmentId));
+    }
+
+    public List<EmployeeDto> getByTypedQuery(int departmentId) {
+        return employeeMapper.modelsToDtos(employeeDao.getEmployeeByTypedQuery(departmentId));
+    }
+
+    public List<EmployeeDto> getByCriteriaApi(float amount, float bonus) {
+        return employeeMapper.modelsToDtos(employeeDao.getEmployee(amount, bonus));
+    }
+
+    public List<EmployeeDto> getEmployeeByGender(Gender gender){
+        return employeeMapper.modelsToDtos( employeeRepo.getEmployeeByGender(gender) );
+    }
+
     public EmployeeDto updateEmployee(Integer id, EmployeeDto newEmployeeDto){
         Employee employeeModel = employeeMapper.DtoToModel(newEmployeeDto);
 
@@ -91,15 +107,4 @@ public class EmployeeService {
         return "ID: "+id+" Deleted";
     }
 
-    public List<EmployeeDto> getByNamedQuery(int departmentId) {
-        return employeeMapper.modelsToDtos(employeeDao.getEmployeeByNamedQuery(departmentId));
-    }
-
-    public List<EmployeeDto> getByTypedQuery(int departmentId) {
-        return employeeMapper.modelsToDtos(employeeDao.getEmployeeByTypedQuery(departmentId));
-    }
-
-    public List<EmployeeDto> getByCriteriaApi(float amount, float bonus) {
-        return employeeMapper.modelsToDtos(employeeDao.getEmployee(amount, bonus));
-    }
 }

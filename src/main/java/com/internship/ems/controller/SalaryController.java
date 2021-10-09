@@ -40,13 +40,11 @@ public class SalaryController {
 
     @DeleteMapping("/deleteSalary/{id}")
     public String deleteSalary(@PathVariable Integer id){
-
         return service.deleteSalary(id);
     }
 
     @DeleteMapping("/deleteSalaries")
     public String deleteAll(){
-
         return service.deleteAll();
     }
 }

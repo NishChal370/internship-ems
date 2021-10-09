@@ -1,11 +1,10 @@
 package com.internship.ems.service;
 
-import java.util.ArrayList;
 import java.util.List;
-
+import java.util.ArrayList;
+import com.internship.ems.model.Department;
 import com.internship.ems.dto.DepartmentDto;
 import com.internship.ems.mapper.DepartmentMapper;
-import com.internship.ems.model.Department;
 import org.springframework.stereotype.Service;
 import javax.persistence.EntityNotFoundException;
 import com.internship.ems.dao.DepartmentRepository;

@@ -1,12 +1,12 @@
 package com.internship.ems.model;
-import com.fasterxml.jackson.annotation.JsonBackReference;
-import com.fasterxml.jackson.annotation.JsonManagedReference;
+
 import com.internship.ems.enums.Gender;
 
-import com.internship.ems.listener.EmployeeListener;
-import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.AllArgsConstructor;
 import lombok.NoArgsConstructor;
+import com.internship.ems.listener.EmployeeListener;
+import com.fasterxml.jackson.annotation.JsonBackReference;
 
 import java.util.Date;
 import java.time.ZoneId;
@@ -27,11 +27,9 @@ public class Employee {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int employeeId;
 
-//    @Column(nullable = false)
     @NotEmpty(message = "FirstName should not be empty")
     private String firstName;
 
-//    @Column(nullable = false)
     @NotEmpty(message = "Last should not be empty")
     private String lastName;
 

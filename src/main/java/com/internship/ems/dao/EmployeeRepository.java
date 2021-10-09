@@ -13,6 +13,8 @@ import java.util.List;
 @Repository
 public interface EmployeeRepository extends CrudRepository<Employee, Integer> {
 
+    List<Employee> getEmployeeByGender(Gender gender);
+
     @Query(value = "SELECT * FROM  employee WHERE first_name=:name", nativeQuery = true)
     List<Employee> getUserByFirstName( @Param("name") String firstName);
 
@@ -26,4 +28,5 @@ public interface EmployeeRepository extends CrudRepository<Employee, Integer> {
     @Modifying
     @Query("DELETE from Employee e WHERE e.employeeId=:employeeId")
     void deleteEmployeeById(@Param("employeeId") int employeeId);
+
 }
