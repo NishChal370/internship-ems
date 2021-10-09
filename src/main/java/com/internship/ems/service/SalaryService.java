@@ -1,6 +1,9 @@
 package com.internship.ems.service;
 
 import java.util.List;
+
+import com.internship.ems.dto.SalaryDto;
+import com.internship.ems.mapper.SalaryMapper;
 import com.internship.ems.model.Salary;
 import org.springframework.stereotype.Service;
 import com.internship.ems.dao.SalaryRepository;
@@ -14,26 +17,32 @@ public class SalaryService {
     @Autowired
     private SalaryRepository salaryRepo;
 
-    public Salary saveSalary(Salary salary){
-        return salaryRepo.save(salary);
+    @Autowired
+    private SalaryMapper salaryMapper;
+
+    public SalaryDto saveSalary(SalaryDto salaryDto){
+        Salary salaryModel = salaryMapper.dtoToModel( salaryDto );
+        return  salaryMapper.modelToDto( salaryRepo.save(salaryModel) );
     }
 
-    public Salary getById(Integer id){
-        return salaryRepo.findById(id).orElseThrow(EntityExistsException::new);
+    public SalaryDto getById(Integer id){
+        return salaryMapper.modelToDto( salaryRepo.findById(id).orElseThrow(EntityExistsException::new) );
     }
 
-    public List<Salary> getAll(){
-        return (List<Salary>) salaryRepo.findAll();
+    public List<SalaryDto> getAll(){
+        return salaryMapper.modelsToDtos( (List<Salary>) salaryRepo.findAll() );
     }
 
-    public Salary updateSalary(Integer id, Salary newSalary){
+    public SalaryDto updateSalary(Integer id, SalaryDto newSalaryDto){
+        Salary salaryModel = salaryMapper.dtoToModel( newSalaryDto );
+
         Salary existingSalary = salaryRepo.findById(id).orElseThrow(EntityNotFoundException::new);
-        existingSalary.setIssueDate(newSalary.getIssueDate());
-        existingSalary.setAmount(newSalary.getAmount());
-        existingSalary.setBonus(newSalary.getBonus());
+        existingSalary.setIssueDate(salaryModel.getIssueDate());
+        existingSalary.setAmount(salaryModel.getAmount());
+        existingSalary.setBonus(salaryModel.getBonus());
         salaryRepo.save(existingSalary);
 
-        return existingSalary;
+        return salaryMapper.modelToDto( existingSalary );
     }
 
     public String deleteSalary(Integer id){

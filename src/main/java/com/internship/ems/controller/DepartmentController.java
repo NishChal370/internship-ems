@@ -2,7 +2,12 @@ package com.internship.ems.controller;
 
 import java.util.List;
 import javax.validation.Valid;
+
+import com.internship.ems.dto.DepartmentDto;
+import com.internship.ems.mapper.DepartmentMapper;
 import com.internship.ems.model.Department;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import com.internship.ems.service.DepartmentService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -10,35 +15,37 @@ import org.springframework.beans.factory.annotation.Autowired;
 @RestController
 public class DepartmentController {
     @Autowired
-    private DepartmentService service;
+    DepartmentService departmentService;
 
     @GetMapping("/departments")
-    public List<Department> getAll(){
-        return service.getAll();
+    public ResponseEntity<List<DepartmentDto>> getAll(){
+        return new ResponseEntity<>(departmentService.getAll(), HttpStatus.OK);
     }
 
     @GetMapping("/department/{id}")
-    public Department getById(@PathVariable Integer id){
-        return service.getById(id);
+    public DepartmentDto getById(@PathVariable Integer id){
+        return departmentService.getById(id);
     }
 
     @PostMapping("/saveDepartment")
-    public Department saveDepartment(@Valid @RequestBody Department department){
-        return service.saveDepartment(department);
+    public ResponseEntity<DepartmentDto> setLaptop(@RequestBody DepartmentDto departmentDto){
+        return new ResponseEntity<DepartmentDto>(
+                departmentService.saveDepartment(departmentDto), HttpStatus.CREATED);
     }
 
     @PutMapping("/updateDepartment/{id}")
-    public Department updateDepartment(@PathVariable Integer id, @RequestBody Department department){
-        return service.updateEmployee(id, department);
+    public ResponseEntity<DepartmentDto> updateDepartment(@PathVariable Integer id, @RequestBody DepartmentDto departmentDto){
+        return new ResponseEntity<DepartmentDto>(
+                departmentService.updateEmployee(id, departmentDto), HttpStatus.CREATED);
     }
 
     @DeleteMapping("/deleteDepartment/{id}")
     public String deleteDepartment(@PathVariable Integer id){
-        return service.deleteDepartment(id);
+        return departmentService.deleteDepartment(id);
     }
 
     @DeleteMapping("/deleteDepartments")
     public String deleteAll(){
-        return service.deleteAll();
+        return departmentService.deleteAll();
     }
 }

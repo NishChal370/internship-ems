@@ -1,28 +1,20 @@
-package com.internship.ems.model;
+package com.internship.ems.dto;
+
 import com.fasterxml.jackson.annotation.JsonBackReference;
-import com.fasterxml.jackson.annotation.JsonManagedReference;
 import com.internship.ems.enums.Gender;
-
-import com.internship.ems.listener.EmployeeListener;
-import lombok.AllArgsConstructor;
+import com.internship.ems.model.Department;
+import com.internship.ems.model.Salary;
 import lombok.Data;
-import lombok.NoArgsConstructor;
 
-import java.util.Date;
-import java.time.ZoneId;
 import javax.persistence.*;
-import java.time.LocalDate;
-import javax.validation.constraints.*;
-
+import javax.validation.constraints.Email;
+import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.NotNull;
+import java.util.Date;
 
 @Data
-@Entity
-@Table(name = "employee", schema = "EMS", uniqueConstraints= {@UniqueConstraint(columnNames={"email"})})
-@AllArgsConstructor
-@NoArgsConstructor
-@EntityListeners(EmployeeListener.class)
-public class Employee {
-    @Id
+public class EmployeeDto {
+
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int employeeId;
 
@@ -53,20 +45,9 @@ public class Employee {
 
     private String address;
 
-    @ManyToOne
-    @JoinColumn(name = "departmentId")
     @JsonBackReference(value = "employee-department")
     private Department department;
 
-    @OneToOne
-    @JoinColumn(name = "salaryId")
     @JsonBackReference(value = "employee-salary")
     public Salary salary;
-
-    @PrePersist
-    public void PrePersist(){
-        ZoneId defaultZoneId = ZoneId.systemDefault();
-        LocalDate localDate = LocalDate.now();
-        this.setHireDate(Date.from(localDate.atStartOfDay(defaultZoneId).toInstant()));
-    }
 }

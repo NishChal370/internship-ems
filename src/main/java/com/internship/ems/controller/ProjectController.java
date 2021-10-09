@@ -2,6 +2,9 @@ package com.internship.ems.controller;
 
 import java.util.List;
 import javax.validation.Valid;
+
+import com.internship.ems.dto.ProjectDto;
+import com.internship.ems.mapper.ProjectMapper;
 import com.internship.ems.model.Project;
 import org.springframework.web.bind.annotation.*;
 import com.internship.ems.service.ProjectService;
@@ -16,23 +19,23 @@ public class ProjectController {
     ProjectService service;
 
     @GetMapping("/projects")
-    public List<Project> getAllProject(){
+    public List<ProjectDto> getAllProject(){
         return service.getAll();
     }
 
     @GetMapping("/project/{id}")
-    public Project getProjectById(@PathVariable int id){
+    public ProjectDto getProjectById(@PathVariable int id){
         return service.getById(id);
     }
 
     @PostMapping("/saveProject")
-    public Project saveProject(@Valid @RequestBody Project project){
-        return service.saveProject(project);
+    public ProjectDto saveProject(@Valid @RequestBody ProjectDto projectDto){
+        return service.saveProject(projectDto);
     }
 
     @PutMapping("/updateProject/{id}")
-    public Project updateProject(@PathVariable int id,@RequestBody Project projectInfo){
-        return service.updateProject(id, projectInfo);
+    public ProjectDto updateProject(@PathVariable int id,@RequestBody ProjectDto projectInfoDto){
+        return service.updateProject(id, projectInfoDto);
     }
 
     @DeleteMapping("/deleteProject/{id}")

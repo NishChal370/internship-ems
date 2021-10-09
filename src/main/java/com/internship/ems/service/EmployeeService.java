@@ -1,6 +1,9 @@
 package com.internship.ems.service;
 
 import java.util.List;
+
+import com.internship.ems.dto.EmployeeDto;
+import com.internship.ems.mapper.EmployeeMapper;
 import com.internship.ems.model.Employee;
 import org.springframework.stereotype.Service;
 import javax.persistence.EntityNotFoundException;
@@ -12,32 +15,42 @@ public class EmployeeService {
     @Autowired
     private EmployeeRepository employeeRepo;
 
-    public Employee saveEmployee( Employee employee){
-        return employeeRepo.save(employee);
+    @Autowired
+    private EmployeeMapper employeeMapper;
+
+    public EmployeeDto saveEmployee( EmployeeDto employeeDto){
+        Employee employeeModel = employeeMapper.DtoToModel(employeeDto);
+        Employee employeeSaved = employeeRepo.save(employeeModel);
+
+        return employeeMapper.modelToDto( employeeSaved ) ;
     }
 
-    public Employee getById(int id){
-        return employeeRepo.findById(id).orElseThrow(EntityNotFoundException::new);
+    public EmployeeDto getById(int id){
+        return employeeMapper.modelToDto( employeeRepo.findById(id).orElseThrow(EntityNotFoundException::new) );
     }
 
-    public List<Employee> getAll(){
-        return (List<Employee>) employeeRepo.findAll();
+    public List<EmployeeDto> getAll(){
+        List<Employee> employeesList = (List<Employee>) employeeRepo.findAll();
+
+        return employeeMapper.modelsToDtos(employeesList);
     }
 
-    public Employee updateEmployee(Integer id, Employee newEmployee){
+    public EmployeeDto updateEmployee(Integer id, EmployeeDto newEmployeeDto){
+        Employee employeeModel = employeeMapper.DtoToModel(newEmployeeDto);
+
         Employee employee = employeeRepo.findById(id).orElseThrow(EntityNotFoundException::new);
-        employee.setFirstName(newEmployee.getFirstName());
-        employee.setLastName(newEmployee.getLastName());
-        employee.setGender(newEmployee.getGender());
-        employee.setAge(newEmployee.getAge());
-        employee.setEmail(newEmployee.getEmail());
-        employee.setDesignation(newEmployee.getDesignation());
-        employee.setHireDate(newEmployee.getHireDate());
-        employee.setResignedDate(newEmployee.getResignedDate());
-        employee.setAddress(newEmployee.getAddress());
+        employee.setFirstName(employeeModel.getFirstName());
+        employee.setLastName(employeeModel.getLastName());
+        employee.setGender(employeeModel.getGender());
+        employee.setAge(employeeModel.getAge());
+        employee.setEmail(employeeModel.getEmail());
+        employee.setDesignation(employeeModel.getDesignation());
+        employee.setHireDate(employeeModel.getHireDate());
+        employee.setResignedDate(employeeModel.getResignedDate());
+        employee.setAddress(employeeModel.getAddress());
         employeeRepo.save(employee);
 
-        return employee;
+        return employeeMapper.modelToDto(employee);
     }
 
     public String deleteEmployee(int id){

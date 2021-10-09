@@ -1,6 +1,9 @@
 package com.internship.ems.model;
 
+import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.NoArgsConstructor;
+
 import javax.persistence.*;
 import javax.validation.constraints.Size;
 import javax.validation.constraints.NotEmpty;
@@ -8,6 +11,8 @@ import javax.validation.constraints.NotEmpty;
 @Data
 @Entity
 @Table(name = "project", schema = "EMS")
+@AllArgsConstructor
+@NoArgsConstructor
 public class Project {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

@@ -1,9 +1,12 @@
 package com.internship.ems.controller;
-import com.internship.ems.model.Salary;
+import com.internship.ems.dto.SalaryDto;
 import com.internship.ems.service.SalaryService;
 
 import java.util.List;
 import javax.validation.Valid;
+
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,26 +16,26 @@ import org.springframework.beans.factory.annotation.Autowired;
 @Validated
 public class SalaryController {
     @Autowired
-    private SalaryService service;
+    SalaryService service;
 
     @GetMapping("/salaries")
-    public List<Salary> getAll(){
+    public List<SalaryDto> getAll(){
         return service.getAll();
     }
 
     @GetMapping("/salary/{id}")
-    public Salary getSalaryById(@PathVariable Integer id){
+    public SalaryDto getSalaryById(@PathVariable Integer id){
         return service.getById(id);
     }
 
     @PostMapping("/saveSalary")
-    public Salary saveSalary(@Valid @RequestBody Salary salary){
-        return service.saveSalary(salary);
+    public ResponseEntity<SalaryDto> saveSalary(@Valid @RequestBody SalaryDto salaryDto){
+        return new ResponseEntity<>(service.saveSalary(salaryDto), HttpStatus.CREATED);
     }
 
     @PutMapping("/updateSalary/{id}")
-    public Salary updateSalary(@PathVariable Integer id, @RequestBody Salary salary){
-        return service.updateSalary(id, salary);
+    public ResponseEntity<SalaryDto> updateSalary(@PathVariable Integer id, @RequestBody SalaryDto salaryDto){
+        return new ResponseEntity<SalaryDto>( service.updateSalary(id, salaryDto) ,HttpStatus.CREATED);
     }
 
     @DeleteMapping("/deleteSalary/{id}")

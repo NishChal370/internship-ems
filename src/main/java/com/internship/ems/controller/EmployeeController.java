@@ -2,7 +2,12 @@ package com.internship.ems.controller;
 
 import java.util.List;
 import javax.validation.Valid;
+
+import com.internship.ems.dto.EmployeeDto;
+import com.internship.ems.mapper.EmployeeMapper;
 import com.internship.ems.model.Employee;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import com.internship.ems.service.EmployeeService;
 import org.springframework.validation.annotation.Validated;
@@ -15,23 +20,23 @@ public class EmployeeController {
     EmployeeService service;
 
     @GetMapping("/employees")
-    public List<Employee> getAllEmployee(){
+    public List<EmployeeDto> getAllEmployee(){
         return service.getAll();
     }
 
     @GetMapping("/employee/{id}")
-    public Employee getEmployeeById(@PathVariable int id){
+    public EmployeeDto getEmployeeById(@PathVariable int id){
         return service.getById(id);
     }
 
     @PostMapping("/addEmployee")
-    public Employee saveEmployee(@Valid @RequestBody Employee employee){
-        return service.saveEmployee(employee);
+    public ResponseEntity<EmployeeDto> saveEmployee(@Valid @RequestBody EmployeeDto employeeDto){
+        return new ResponseEntity<>(service.saveEmployee(employeeDto), HttpStatus.CREATED);
     }
 
     @PutMapping("/updateEmployee/{id}")
-    public Employee updateEmployee(@PathVariable int id, @RequestBody Employee employeeInfo) {
-        return service.updateEmployee(id, employeeInfo);
+    public ResponseEntity<EmployeeDto> updateEmployee(@PathVariable int id, @RequestBody EmployeeDto employeeInfoDto) {
+        return new ResponseEntity<>(service.updateEmployee(id, employeeInfoDto), HttpStatus.CREATED);
     }
 
     @DeleteMapping("/deleteEmployee/{id}")

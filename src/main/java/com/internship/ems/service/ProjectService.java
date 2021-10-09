@@ -1,6 +1,9 @@
 package com.internship.ems.service;
 
 import java.util.List;
+
+import com.internship.ems.dto.ProjectDto;
+import com.internship.ems.mapper.ProjectMapper;
 import com.internship.ems.model.Project;
 import org.springframework.stereotype.Service;
 import com.internship.ems.dao.ProjectRepository;
@@ -13,25 +16,33 @@ public class ProjectService {
     @Autowired
     private ProjectRepository projectRepo;
 
-    public Project saveProject(Project project){
-        return projectRepo.save(project);
+    @Autowired
+    private ProjectMapper projectMapper;
+
+    public ProjectDto saveProject(ProjectDto projectDto){
+        Project projectModel = projectMapper.dtoToModel(projectDto);
+        return  projectMapper.modelToDto( projectRepo.save(projectModel) );
     }
 
-    public Project getById(int id){
-        return projectRepo.findById(id).orElseThrow(EntityNotFoundException::new);
+    public ProjectDto getById(int id){
+        Project projectWithSearchedId = projectRepo.findById(id).orElseThrow(EntityNotFoundException::new);
+
+        return  projectMapper.modelToDto( projectRepo.findById(id).orElseThrow(EntityNotFoundException::new) );
     }
 
-    public List<Project> getAll(){
-        return (List<Project>) projectRepo.findAll();
+    public List<ProjectDto> getAll(){
+        return projectMapper.modelsToDtos( (List<Project>) projectRepo.findAll() );
     }
 
-    public Project updateProject(int id, Project newProject){
+    public ProjectDto updateProject(int id, ProjectDto newProjectDto){
+        Project newProjectModel= projectMapper.dtoToModel( newProjectDto );
+
         Project project = projectRepo.findById(id).orElseThrow(EntityNotFoundException::new);
-        project.setName(newProject.getName());
-        project.setDescription(newProject.getDescription());
+        project.setName(newProjectModel.getName());
+        project.setDescription(newProjectModel.getDescription());
         projectRepo.save(project);
 
-        return project;
+        return projectMapper.modelToDto( project );
     }
 
     public String deleteProject(int id){

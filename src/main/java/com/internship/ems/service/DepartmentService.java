@@ -1,6 +1,10 @@
 package com.internship.ems.service;
 
+import java.util.ArrayList;
 import java.util.List;
+
+import com.internship.ems.dto.DepartmentDto;
+import com.internship.ems.mapper.DepartmentMapper;
 import com.internship.ems.model.Department;
 import org.springframework.stereotype.Service;
 import javax.persistence.EntityNotFoundException;
@@ -14,25 +18,36 @@ public class DepartmentService {
     @Autowired
     private DepartmentRepository departmentRepo;
 
-    public Department saveDepartment(Department department){
-        return departmentRepo.save(department);
+    @Autowired
+    private DepartmentMapper departmentMapper;
+
+    public DepartmentDto saveDepartment(DepartmentDto departmentDto){
+        Department departmentModel = departmentMapper.dtoToModel(departmentDto);
+        Department DepartmentSaved = departmentRepo.save(departmentModel);
+
+        return departmentMapper.modelToDto(DepartmentSaved);
     }
 
-    public Department getById(int id){
-        return departmentRepo.findById(id).orElseThrow(EntityNotFoundException::new);
+    public DepartmentDto getById(int id){
+        return departmentMapper.modelToDto( departmentRepo.findById(id).orElseThrow(EntityNotFoundException::new));
     }
 
-    public List<Department> getAll(){
-        return (List<Department>) departmentRepo.findAll();
+    public List<DepartmentDto> getAll() {
+        List<Department> result = new ArrayList<>();
+        departmentRepo.findAll().forEach(result::add);
+
+        return departmentMapper.modelsToDtos(result);
     }
 
-    public Department updateEmployee(Integer id, Department newDepartment){
+    public DepartmentDto  updateEmployee(Integer id, DepartmentDto newDepartmentDto){
         Department department = departmentRepo.findById(id).orElseThrow(EntityNotFoundException::new);
-        department.setName(newDepartment.getName());
-        department.setDescription(newDepartment.getDescription());
+
+        Department newDepartmentModel = departmentMapper.dtoToModel(newDepartmentDto);
+        department.setName(newDepartmentModel.getName());
+        department.setDescription(newDepartmentModel.getDescription());
         departmentRepo.save(department);
 
-        return department;
+        return departmentMapper.modelToDto(department);
     }
 
     public String deleteDepartment(Integer id){
