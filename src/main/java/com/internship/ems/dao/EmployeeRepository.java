@@ -16,7 +16,7 @@ public interface EmployeeRepository extends CrudRepository<Employee, Integer> {
     List<Employee> getEmployeeByGender(Gender gender);
 
     @Query(value = "SELECT * FROM  employee WHERE first_name=:name", nativeQuery = true)
-    List<Employee> getUserByFirstName( @Param("name") String firstName);
+    List<Employee> getEmployeeByFirstName( @Param("name") String firstName);
 
     @Query("SELECT e FROM Employee e WHERE e.gender =?1 AND e.age =?2")
     List<Employee> getEmployeeByGenderAndAge(Gender gender, int age);

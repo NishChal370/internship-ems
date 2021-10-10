@@ -42,7 +42,7 @@ public class EmployeeService {
 
     public List<EmployeeDto> getEmployeeByFirstName(String firstName){
 
-        return employeeMapper.modelsToDtos( employeeRepo.getUserByFirstName(firstName) );
+        return employeeMapper.modelsToDtos( employeeRepo.getEmployeeByFirstName(firstName) );
     }
 
     public List<EmployeeDto> getEmployeeByGenderAndAge(Gender gender, int age){
