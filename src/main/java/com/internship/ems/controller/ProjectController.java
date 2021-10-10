@@ -33,6 +33,7 @@ public class ProjectController {
 
     @PutMapping("/updateProject/{id}")
     public ProjectDto updateProject(@PathVariable int id,@RequestBody ProjectDto projectInfoDto){
+        System.out.println("Upsdate "+projectInfoDto);
         return service.updateProject(id, projectInfoDto);
     }
 

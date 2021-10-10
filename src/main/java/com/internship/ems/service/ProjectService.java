@@ -54,6 +54,6 @@ public class ProjectService {
     public String deleteAll(){
         projectRepo.deleteAll();
 
-        return "Employee all deleted";
+        return "Project all deleted";
     }
 }
