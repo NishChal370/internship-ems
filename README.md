@@ -1,74 +1,74 @@
 # `Departments`
 
 ### Get all departments
-![department](output/department/get department.PNG)
+![department](output/department/getDepartment.PNG)
 ### Get departments by id 
-![department](output/department/get department by id.PNG)
+![department](output/department/getDepartmentById.PNG)
 ### Set Department
-![department](output/department/save department.PNG)
+![department](output/department/saveDepartment.PNG)
 ### Update Department
-![department](output/department/update department.PNG)
+![department](output/department/updateDepartment.PNG)
 ### Delete Department
-![department](output/department/delete department.PNG)
+![department](output/department/deleteDepartment.PNG)
 
 # `Employee`
 
 ### Get all employee
-![employee](output/employee/get employee.PNG)
+![employee](output/employee/getEmployee.PNG)
 ### Get employee by id
-![employee](output/employee/get employee by id.PNG)
+![employee](output/employee/getEmployeeById.PNG)
 ### Find employee by firstName
-![employee](output/employee/Find employee by firstName.PNG)
+![employee](output/employee/findEmployeeByFirstName.PNG)
 ### Find employee by gender and age
-![employee](output/employee/get employee by name and age.PNG)
+![employee](output/employee/getEmployeeByNameAndAge.PNG)
 ### Get employee by gender
-![employee](output/employee/get employee by gender.PNG)
+![employee](output/employee/getEmployeeByGender.PNG)
 ### Get employee by named query
-![employee](output/employee/Get employee by named query.PNG)
+![employee](output/employee/getEmployeeByNamedQuery.PNG)
 ### Get employee Using TypedQuery
-![employee](output/employee/Get employee Using TypedQuery.PNG)
+![employee](output/employee/getEmployeeUsingTypedQuery.PNG)
 ### Get employee by Jpql
-![employee](output/employee/Get employee by Jpql.PNG)
+![employee](output/employee/getEmployeeByJpql.PNG)
 ### Save employee
-![employee](output/employee/Save employee.PNG)
+![employee](output/employee/saveEmployee.PNG)
 ### Update employee
-![employee](output/employee/Save employee.PNG)
+![employee](output/employee/saveEmployee.PNG)
 ### Update employee age by id
-![employee](output/employee/Update employee.PNG)
+![employee](output/employee/updateEmployee.PNG)
 ## criteriaApi amount and bound
-![employee](output/employee/criteriaApi.PNG)
+![employee](output/employee/criteriaApi.png)
 ### delete employee
-![employee](output/employee/delete employee.PNG)
+![employee](output/employee/deleteEmployee.PNG)
 
 # `Salary`
 
 ### Get all Salary
-![Salary](output/salary/get all salaries.PNG)
+![Salary](output/salary/getAllSalaries.PNG)
 ### Get salary by id
-![Salary](output/salary/get salary by id.PNG)
+![Salary](output/salary/getSalaryById.PNG)
 ### Save salary
-![Salary](output/salary/save salary.PNG)
+![Salary](output/salary/saveSalary.PNG)
 ### Update salary
-![Salary](output/salary/update salary.PNG)
+![Salary](output/salary/updateSalary.PNG)
 ### Delete salary
-![Salary](output/salary/delete salary.PNG)
+![Salary](output/salary/deleteSalary.PNG)
 
 # `Project`
 
 ### Get all project
-![Project](output/project/Get all project.PNG)
+![Project](output/project/getAllProject.PNG)
 ### Get project by id
-![Project](output/project/Get project by id.PNG)
+![Project](output/project/getProjectById.PNG)
 ### Save project
 ![Project](output/project/saveProject.PNG)
 ### Update project
-![Project](output/project/Update project.PNG)
+![Project](output/project/updateProject.PNG)
 ### Delete project
-![Project](output/project/delete project.PNG)
+![Project](output/project/deleteProject.PNG)
 
 # `Some Validations`
 
 ### Employee name empty
-![Validation](output/Validations/employee name validation.PNG)
+![Validation](output/Validations/employeeNameValidation.PNG)
 ### Project name empty
-![Validation](output/Validations/project name empty.PNG)
+![Validation](output/Validations/projectNameEmpty.PNG)
